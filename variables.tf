@@ -153,18 +153,18 @@ variable "name" {
 }
 
 ###############
-# Seal metadata
+# Walrus metadata
 ###############
 
 # @hidden
-variable "seal_metadata_service_name" {
+variable "walrus_metadata_service_name" {
   type        = string
-  description = "Seal metadata service name."
+  description = "Walrus metadata service name."
   default     = ""
 }
 # @hidden
-variable "seal_metadata_namespace_name" {
+variable "walrus_metadata_namespace_name" {
   type        = string
-  description = "Seal metadata namespace name."
+  description = "Walrus metadata namespace name."
   default     = ""
 }
