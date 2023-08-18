@@ -53,13 +53,13 @@ No modules.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_kaniko"></a> [kaniko](#requirement\_kaniko) | 0.0.1-dev1 |
+| <a name="requirement_kaniko"></a> [kaniko](#requirement\_kaniko) | 0.0.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_kaniko"></a> [kaniko](#provider\_kaniko) | 0.0.1-dev1 |
+| <a name="provider_kaniko"></a> [kaniko](#provider\_kaniko) | 0.0.1 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | n/a |
 
 ## Modules
@@ -73,7 +73,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [kaniko_image.image](https://registry.terraform.io/providers/gitlawr/kaniko/0.0.1-dev1/docs/resources/image) | resource |
+| [kaniko_image.image](https://registry.terraform.io/providers/seal-io/kaniko/0.0.1/docs/resources/image) | resource |
 | [kubernetes_service.service](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service) | data source |
 
 ## Inputs
@@ -100,14 +100,14 @@ No modules.
 | <a name="input_replicas"></a> [replicas](#input\_replicas) | Count of pods | `number` | `1` | no |
 | <a name="input_request_cpu"></a> [request\_cpu](#input\_request\_cpu) | CPU request. e.g. 0.5, 1, 2 | `string` | `"0.1"` | no |
 | <a name="input_request_memory"></a> [request\_memory](#input\_request\_memory) | Memory request. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi | `string` | `"128Mi"` | no |
-| <a name="input_seal_metadata_namespace_name"></a> [seal\_metadata\_namespace\_name](#input\_seal\_metadata\_namespace\_name) | Seal metadata namespace name. | `string` | `""` | no |
-| <a name="input_seal_metadata_service_name"></a> [seal\_metadata\_service\_name](#input\_seal\_metadata\_service\_name) | Seal metadata service name. | `string` | `""` | no |
+| <a name="input_walrus_metadata_namespace_name"></a> [walrus\_metadata\_namespace\_name](#input\_walrus\_metadata\_namespace\_name) | Walrus metadata namespace name. | `string` | `""` | no |
+| <a name="input_walrus_metadata_service_name"></a> [walrus\_metadata\_service\_name](#input\_walrus\_metadata\_service\_name) | Walrus metadata service name. | `string` | `""` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_image"></a> [image](#output\_image) | Build and deploy docker image name |
+| <a name="output_image"></a> [image](#output\_image) | Built docker image name |
 | <a name="output_ports"></a> [ports](#output\_ports) | Service Ports |
 | <a name="output_service_ip"></a> [service\_ip](#output\_service\_ip) | Service IP |
 <!-- END_TF_DOCS -->
