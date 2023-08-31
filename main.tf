@@ -13,7 +13,7 @@ terraform {
 
 resource "kaniko_image" "image" {
   # Only handle git context. Explicitly use the git scheme.
-  context     = replace(var.git_url, "https://", "git://")
+  context     = "${local.formal_git_url}#refs/heads/${var.git_branch}"
   dockerfile  = var.dockerfile
   destination = var.image
 
@@ -86,4 +86,5 @@ data "kubernetes_service" "service" {
 locals {
   name      = coalesce(var.name, "${var.walrus_metadata_service_name}")
   namespace = coalesce(var.namespace, var.walrus_metadata_namespace_name)
+  formal_git_url = replace(var.git_url, "https://", "git://")
 }
