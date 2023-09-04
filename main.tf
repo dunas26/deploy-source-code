@@ -2,7 +2,7 @@ terraform {
   required_providers {
     kaniko = {
       source  = "seal-io/kaniko"
-      version = "0.0.1"
+      version = "0.0.2"
     }
   }
 }
@@ -36,7 +36,7 @@ module "deployment" {
 
   # Use local paths to avoid accessing external networks
   # This module comes from terraform registry "terraform-iaac/deployment/kubernetes 1.4.2"
-  source  = "./modules/deployment/kubernetes"
+  source = "./modules/deployment/kubernetes"
 
   name      = local.name
   namespace = local.namespace
@@ -56,7 +56,7 @@ module "service" {
 
   # Use local paths to avoid accessing external networks
   # This module comes from terraform registry "terraform-iaac/service/kubernetes 1.0.4"
-  source  = "./modules/service/kubernetes"
+  source = "./modules/service/kubernetes"
 
   app_name      = local.name
   app_namespace = local.namespace
@@ -84,7 +84,7 @@ data "kubernetes_service" "service" {
 ########
 
 locals {
-  name      = coalesce(var.name, "${var.walrus_metadata_service_name}")
-  namespace = coalesce(var.namespace, var.walrus_metadata_namespace_name)
+  name           = coalesce(var.name, "${var.walrus_metadata_service_name}")
+  namespace      = coalesce(var.namespace, var.walrus_metadata_namespace_name)
   formal_git_url = replace(var.git_url, "https://", "git://")
 }

@@ -8,13 +8,13 @@ This module will also generate to image name to output.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_kaniko"></a> [kaniko](#requirement\_kaniko) | 0.0.1-dev1 |
+| <a name="requirement_kaniko"></a> [kaniko](#requirement\_kaniko) | 0.0.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_kaniko"></a> [kaniko](#provider\_kaniko) | 0.0.1-dev1 |
+| <a name="provider_kaniko"></a> [kaniko](#provider\_kaniko) | 0.0.2 |
 
 ## Modules
 
@@ -24,7 +24,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [kaniko_image.image](https://registry.terraform.io/providers/gitlawr/kaniko/0.0.1-dev1/docs/resources/image) | resource |
+| [kaniko_image.image](https://registry.terraform.io/providers/seal-io/kaniko/0.0.2/docs/resources/image) | resource |
 
 ## Inputs
 
@@ -53,13 +53,13 @@ No modules.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_kaniko"></a> [kaniko](#requirement\_kaniko) | 0.0.1 |
+| <a name="requirement_kaniko"></a> [kaniko](#requirement\_kaniko) | 0.0.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_kaniko"></a> [kaniko](#provider\_kaniko) | 0.0.1 |
+| <a name="provider_kaniko"></a> [kaniko](#provider\_kaniko) | 0.0.2 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | n/a |
 
 ## Modules
@@ -73,7 +73,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [kaniko_image.image](https://registry.terraform.io/providers/seal-io/kaniko/0.0.1/docs/resources/image) | resource |
+| [kaniko_image.image](https://registry.terraform.io/providers/seal-io/kaniko/0.0.2/docs/resources/image) | resource |
 | [kubernetes_service.service](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service) | data source |
 
 ## Inputs
