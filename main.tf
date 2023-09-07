@@ -2,7 +2,7 @@ terraform {
   required_providers {
     kaniko = {
       source  = "seal-io/kaniko"
-      version = "0.0.2"
+      version = "0.0.3"
     }
   }
 }
@@ -21,6 +21,8 @@ resource "kaniko_image" "image" {
   git_password      = var.git_auth ? var.git_password : ""
   registry_username = var.registry_auth ? var.registry_username : ""
   registry_password = var.registry_auth ? var.registry_password : ""
+
+  always_run = true
 }
 
 ########
