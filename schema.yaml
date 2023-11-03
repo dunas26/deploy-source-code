@@ -1,0 +1,169 @@
+openapi: 3.0.3
+info:
+  title: OpenAPI schema for template deploy-source-code
+components:
+  schemas:
+    variables:
+      type: object
+      required:
+      - git_url
+      - image
+      properties:
+        git_url:
+          title: Git URL
+          type: string
+          description: URL to the source code repository.
+          x-walrus-ui:
+            group: Build
+        git_branch:
+          title: Git Branch
+          type: string
+          description: Branch of the repository to clone.
+          default: main
+          x-walrus-ui:
+            group: Build
+        git_auth:
+          title: Git Authentication
+          type: boolean
+          default: false
+          x-walrus-ui:
+            group: Build
+        git_username:
+          title: Git Username
+          type: string
+          description: Username for cloning the git repository.
+          writeOnly: true
+          x-walrus-ui:
+            group: Build
+            showIf: git_auth=true
+        git_password:
+          title: Git Password
+          type: string
+          description: Password for cloning the git repository.
+          writeOnly: true
+          x-walrus-ui:
+            group: Build
+            showIf: git_auth=true
+        git_path:
+          title: Sub Path
+          type: string
+          description: Path to the source code.
+          x-walrus-ui:
+            group: Build
+        dockerfile:
+          title: Dockerfile Path
+          type: string
+          description: Path to the Dockerfile.
+          default: Dockerfile
+          x-walrus-ui:
+            group: Build
+        registry_auth:
+          title: Registry Authentication
+          type: boolean
+          default: false
+          x-walrus-ui:
+            group: Build
+        registry_username:
+          title: Registry Username
+          type: string
+          description: Username for the image registry.
+          writeOnly: true
+          x-walrus-ui:
+            group: Build
+            showIf: registry_auth=true
+        registry_password:
+          title: Registry Password
+          type: string
+          description: Password for the image registry.
+          writeOnly: true
+          x-walrus-ui:
+            group: Build
+            showIf: registry_auth=true
+        image:
+          title: Image Name
+          type: string
+          description: Name of the image to be built and deployed.
+          x-walrus-ui:
+            group: Build
+        replicas:
+          title: Replicas
+          type: number
+          description: Count of pods
+          default: 1
+          x-walrus-ui:
+            group: Deploy/Basic
+        ports:
+          title: Ports
+          type: array
+          default:
+          - 80
+          description: Service ports to expose
+          items:
+            type: number
+          x-walrus-ui:
+            group: Deploy/Basic
+        env:
+          title: Environment Variables
+          type: object
+          description: Name and value pairs to set as the environment variables
+          default: {}
+          additionalProperties:
+            type: string
+          x-walrus-ui:
+            group: Deploy/Basic
+        request_cpu:
+          title: CPU Request
+          type: string
+          description: CPU request. e.g. 0.5, 1, 2
+          default: '0.1'
+          x-walrus-ui:
+            group: Deploy/Resources
+        request_memory:
+          title: Memory Request
+          type: string
+          default: 128Mi
+          description: Memory request. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
+          x-walrus-ui:
+            group: Deploy/Resources
+        limit_cpu:
+          title: CPU Limit
+          type: string
+          description: CPU limit. e.g. 0.5, 1, 2
+          default: ''
+          x-walrus-ui:
+            group: Deploy/Resources
+        limit_memory:
+          title: Memory Limit
+          type: string
+          description: Memory limit. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
+          default: ''
+          x-walrus-ui:
+            group: Deploy/Resources
+        namespace:
+          title: Namespace
+          type: string
+          description: Namespace to deploy. Auto-generated if empty.
+          default: ''
+          x-walrus-ui:
+            group: Deploy/Advanced
+        name:
+          title: Deployment Name
+          type: string
+          description: Name of the deployment resource. Auto-generated if empty.
+          default: ''
+          x-walrus-ui:
+            group: Deploy/Advanced
+        walrus_metadata_service_name:
+          title: walrus_metadata_service_name
+          type: string
+          description: Walrus metadata service name.
+          default: ''
+          x-walrus-ui:
+            hidden: true
+        walrus_metadata_namespace_name:
+          title: walrus_metadata_namespace_name
+          type: string
+          description: Walrus metadata namespace name.
+          default: ''
+          x-walrus-ui:
+            hidden: true
