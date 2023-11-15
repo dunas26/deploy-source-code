@@ -86,7 +86,7 @@ data "kubernetes_service" "service" {
 ########
 
 locals {
-  name           = coalesce(var.name, "${var.walrus_metadata_service_name}")
-  namespace      = coalesce(var.namespace, var.walrus_metadata_namespace_name)
+  name           = coalesce(try(var.name, null), try(var.walrus_metadata_service_name, null), try(var.context["resource"]["name"], null))
+  namespace      = coalesce(try(var.namespace, null), try(var.walrus_metadata_namespace_name, null), try(var.context["environment"]["namespace"], null))
   formal_git_url = replace(var.git_url, "https://", "git://")
 }
