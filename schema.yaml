@@ -4,10 +4,10 @@ info:
 components:
   schemas:
     variables:
-      type: object
       required:
       - git_url
       - image
+      type: object
       properties:
         git_url:
           title: Git URL
@@ -41,6 +41,7 @@ components:
           type: string
           description: Password for cloning the git repository.
           writeOnly: true
+          format: password
           x-walrus-ui:
             group: Build
             showIf: git_auth=true
@@ -76,6 +77,7 @@ components:
           type: string
           description: Password for the image registry.
           writeOnly: true
+          format: password
           x-walrus-ui:
             group: Build
             showIf: registry_auth=true
@@ -95,9 +97,9 @@ components:
         ports:
           title: Ports
           type: array
+          description: Service ports to expose
           default:
           - 80
-          description: Service ports to expose
           items:
             type: number
           x-walrus-ui:
@@ -115,55 +117,66 @@ components:
           title: CPU Request
           type: string
           description: CPU request. e.g. 0.5, 1, 2
-          default: '0.1'
+          default: "0.1"
           x-walrus-ui:
             group: Deploy/Resources
         request_memory:
           title: Memory Request
           type: string
-          default: 128Mi
           description: Memory request. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
+          default: 128Mi
           x-walrus-ui:
             group: Deploy/Resources
         limit_cpu:
           title: CPU Limit
           type: string
           description: CPU limit. e.g. 0.5, 1, 2
-          default: ''
+          default: ""
           x-walrus-ui:
             group: Deploy/Resources
         limit_memory:
           title: Memory Limit
           type: string
           description: Memory limit. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
-          default: ''
+          default: ""
           x-walrus-ui:
             group: Deploy/Resources
         namespace:
           title: Namespace
           type: string
           description: Namespace to deploy. Auto-generated if empty.
-          default: ''
+          default: ""
           x-walrus-ui:
             group: Deploy/Advanced
         name:
           title: Deployment Name
           type: string
           description: Name of the deployment resource. Auto-generated if empty.
-          default: ''
+          default: ""
           x-walrus-ui:
             group: Deploy/Advanced
-        walrus_metadata_service_name:
-          title: walrus_metadata_service_name
-          type: string
-          description: Walrus metadata service name.
-          default: ''
+        context:
+          title: Context
+          type: object
+          description: |
+            Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.
+
+            Examples:
+            ```
+            context:
+              project:
+                name: string
+                id: string
+              environment:
+                name: string
+                id: string
+              resource:
+                name: string
+                id: string
+            ```
+          default: {}
+          additionalProperties:
+            type: object
           x-walrus-ui:
-            hidden: true
-        walrus_metadata_namespace_name:
-          title: walrus_metadata_namespace_name
-          type: string
-          description: Walrus metadata namespace name.
-          default: ''
-          x-walrus-ui:
+            group: Basic
             hidden: true
