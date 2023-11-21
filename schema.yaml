@@ -7,6 +7,10 @@ components:
       required:
       - git_url
       - image
+      x-walrus-ui:
+        groupOrder:
+        - Build
+        - Deploy
       type: object
       properties:
         git_url:
@@ -15,6 +19,7 @@ components:
           description: URL to the source code repository.
           x-walrus-ui:
             group: Build
+            order: 1
         git_branch:
           title: Git Branch
           type: string
@@ -22,12 +27,14 @@ components:
           default: main
           x-walrus-ui:
             group: Build
+            order: 2
         git_auth:
           title: Git Authentication
           type: boolean
           default: false
           x-walrus-ui:
             group: Build
+            order: 3
         git_username:
           title: Git Username
           type: string
@@ -35,15 +42,17 @@ components:
           writeOnly: true
           x-walrus-ui:
             group: Build
+            order: 4
             showIf: git_auth=true
         git_password:
           title: Git Password
           type: string
           description: Password for cloning the git repository.
-          writeOnly: true
           format: password
+          writeOnly: true
           x-walrus-ui:
             group: Build
+            order: 5
             showIf: git_auth=true
         git_path:
           title: Sub Path
@@ -51,6 +60,7 @@ components:
           description: Path to the source code.
           x-walrus-ui:
             group: Build
+            order: 6
         dockerfile:
           title: Dockerfile Path
           type: string
@@ -58,12 +68,14 @@ components:
           default: Dockerfile
           x-walrus-ui:
             group: Build
+            order: 7
         registry_auth:
           title: Registry Authentication
           type: boolean
           default: false
           x-walrus-ui:
             group: Build
+            order: 8
         registry_username:
           title: Registry Username
           type: string
@@ -71,15 +83,17 @@ components:
           writeOnly: true
           x-walrus-ui:
             group: Build
+            order: 9
             showIf: registry_auth=true
         registry_password:
           title: Registry Password
           type: string
           description: Password for the image registry.
-          writeOnly: true
           format: password
+          writeOnly: true
           x-walrus-ui:
             group: Build
+            order: 10
             showIf: registry_auth=true
         image:
           title: Image Name
@@ -87,13 +101,15 @@ components:
           description: Name of the image to be built and deployed.
           x-walrus-ui:
             group: Build
+            order: 11
         replicas:
           title: Replicas
           type: number
           description: Count of pods
           default: 1
           x-walrus-ui:
-            group: Deploy/Basic
+            group: Deploy
+            order: 12
         ports:
           title: Ports
           type: array
@@ -103,7 +119,8 @@ components:
           items:
             type: number
           x-walrus-ui:
-            group: Deploy/Basic
+            group: Deploy
+            order: 13
         env:
           title: Environment Variables
           type: object
@@ -112,49 +129,57 @@ components:
           additionalProperties:
             type: string
           x-walrus-ui:
-            group: Deploy/Basic
+            colSpan: 12
+            group: Deploy
+            order: 14
         request_cpu:
           title: CPU Request
           type: string
           description: CPU request. e.g. 0.5, 1, 2
           default: "0.1"
           x-walrus-ui:
-            group: Deploy/Resources
+            group: Deploy
+            order: 15
         request_memory:
           title: Memory Request
           type: string
           description: Memory request. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
           default: 128Mi
           x-walrus-ui:
-            group: Deploy/Resources
+            group: Deploy
+            order: 16
         limit_cpu:
           title: CPU Limit
           type: string
           description: CPU limit. e.g. 0.5, 1, 2
           default: ""
           x-walrus-ui:
-            group: Deploy/Resources
+            group: Deploy
+            order: 17
         limit_memory:
           title: Memory Limit
           type: string
           description: Memory limit. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
           default: ""
           x-walrus-ui:
-            group: Deploy/Resources
+            group: Deploy
+            order: 18
         namespace:
           title: Namespace
           type: string
           description: Namespace to deploy. Auto-generated if empty.
           default: ""
           x-walrus-ui:
-            group: Deploy/Advanced
+            group: Deploy
+            order: 19
         name:
           title: Deployment Name
           type: string
           description: Name of the deployment resource. Auto-generated if empty.
           default: ""
           x-walrus-ui:
-            group: Deploy/Advanced
+            group: Deploy
+            order: 20
         context:
           title: Context
           type: object
@@ -177,6 +202,10 @@ components:
           default: {}
           additionalProperties:
             type: object
+            x-walrus-ui:
+              colSpan: 12
           x-walrus-ui:
-            group: Basic
             hidden: true
+            group: Deploy
+            order: 21
+
