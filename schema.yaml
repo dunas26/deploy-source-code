@@ -119,8 +119,57 @@ components:
           items:
             type: number
           x-walrus-ui:
+            colSpan: 6
             group: Deploy
             order: 13
+        request_cpu:
+          title: CPU Request
+          type: string
+          description: CPU request. e.g. 0.5, 1, 2
+          default: "0.1"
+          x-walrus-ui:
+            group: Deploy
+            order: 14
+        request_memory:
+          title: Memory Request
+          type: string
+          description: Memory request. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
+          default: 128Mi
+          x-walrus-ui:
+            group: Deploy
+            order: 15
+        limit_cpu:
+          title: CPU Limit
+          type: string
+          description: CPU limit. e.g. 0.5, 1, 2
+          default: ""
+          x-walrus-ui:
+            group: Deploy
+            order: 16
+        limit_memory:
+          title: Memory Limit
+          type: string
+          description: Memory limit. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
+          default: ""
+          x-walrus-ui:
+            group: Deploy
+            order: 17
+        namespace:
+          title: Namespace
+          type: string
+          description: Namespace to deploy. Auto-generated if empty.
+          default: ""
+          x-walrus-ui:
+            group: Deploy
+            order: 18
+        name:
+          title: Deployment Name
+          type: string
+          description: Name of the deployment resource. Auto-generated if empty.
+          default: ""
+          x-walrus-ui:
+            group: Deploy
+            order: 19
         env:
           title: Environment Variables
           type: object
@@ -130,54 +179,6 @@ components:
             type: string
           x-walrus-ui:
             colSpan: 12
-            group: Deploy
-            order: 14
-        request_cpu:
-          title: CPU Request
-          type: string
-          description: CPU request. e.g. 0.5, 1, 2
-          default: "0.1"
-          x-walrus-ui:
-            group: Deploy
-            order: 15
-        request_memory:
-          title: Memory Request
-          type: string
-          description: Memory request. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
-          default: 128Mi
-          x-walrus-ui:
-            group: Deploy
-            order: 16
-        limit_cpu:
-          title: CPU Limit
-          type: string
-          description: CPU limit. e.g. 0.5, 1, 2
-          default: ""
-          x-walrus-ui:
-            group: Deploy
-            order: 17
-        limit_memory:
-          title: Memory Limit
-          type: string
-          description: Memory limit. e.g. 128Mi, 512Mi, 1Gi, 2Gi, 4Gi
-          default: ""
-          x-walrus-ui:
-            group: Deploy
-            order: 18
-        namespace:
-          title: Namespace
-          type: string
-          description: Namespace to deploy. Auto-generated if empty.
-          default: ""
-          x-walrus-ui:
-            group: Deploy
-            order: 19
-        name:
-          title: Deployment Name
-          type: string
-          description: Name of the deployment resource. Auto-generated if empty.
-          default: ""
-          x-walrus-ui:
             group: Deploy
             order: 20
         context:
