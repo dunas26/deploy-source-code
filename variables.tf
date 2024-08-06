@@ -39,6 +39,14 @@ variable "git_password" {
   sensitive   = true
   description = "Password for cloning the git repository."
 }
+# @label "Use GIT Protocol"
+# @group "Build"
+# @show_if "git_auth=true"
+variable "use_git_protocol" {
+  type        = bool
+  default     = false
+  description = "Use \"git://\" instead of \"https://\" protocol on the git url."
+}
 # @label "Sub Path"
 # @group "Build"
 variable "git_path" {
